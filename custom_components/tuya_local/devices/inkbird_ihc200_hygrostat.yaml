@@ -1,0 +1,77 @@
+name: Inkbird IHC-200 hygrostat
+primary_entity:
+  entity: humidifier
+  class: humidifier
+  dps:
+    - id: 12
+      type: bitfield
+      name: error
+      mapping:
+        - dps_val: 0
+          value: OK
+    - id: 102
+      type: integer
+      name: humidity_offset
+      mapping:
+        - scale: 10
+    - id: 104
+      name: current_humidity
+      type: integer
+      range:
+        min: 0
+        max: 999
+      mapping:
+        - scale: 10
+    - id: 106
+      name: humidity
+      type: integer
+      range:
+        min: 50
+        max: 990
+      mapping:
+        - scale: 10
+    - id: 109
+      type: integer
+      name: humidity-alarm-high
+      mapping:
+        - scale: 10
+    - id: 110
+      type: integer
+      name: humidity_alarm-low
+      mapping:
+        - scale: 10
+    - id: 111
+      type: boolean
+      name: high_humidity_alarm
+    - id: 112
+      type: boolean
+      name: low_humidity_alarm
+    - id: 113
+      type: boolean
+      name: sensor_fault_alarm
+    - id: 115
+      type: string
+      name: hvac_action
+    - id: 117
+      type: integer
+      name: diff_humidity
+      mapping:
+        - scale: 10
+    - id: 118
+      type: integer
+      name: diff_dehumidity
+      mapping:
+        - scale: 10
+    - id: 119
+      type: boolean
+      name: sensor_fault_alarm2
+secondary_entities:
+  - entity: sensor
+    class: humidity
+    dps:
+      - id: 104
+        type: integer
+        name: sensor
+        class: measurement
+        mapping:
+          - scale: 10
